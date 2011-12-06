@@ -1,0 +1,1 @@
+grep '-' < log | cut -d'-' -f1 | python /home/sebastiano/gitspace/sparkles/plot.py &

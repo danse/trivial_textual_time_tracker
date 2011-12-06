@@ -1,0 +1,1 @@
+cut -d'-' -f3 < log | sed -s 's/ $//' | sort | uniq | while read desc; do echo -n "$desc - "; grep "$desc" log | cut -d' ' -f1 | python /home/sebastiano/gitspace/sparkles/sum.py ; done | sort -t'-' -k2 -n

@@ -1,0 +1,20 @@
+sep="___________________________________________"
+log="/home/sebastiano/time/log"
+clear;
+last_date=$(date +'%s')
+while read line;
+
+ do diff=$((($(date +'%s') - $last_date)/60));
+ echo "$diff - $last_line">>$log;
+ last_line="$(date) - $line">>$log;
+ last_date=$(date +'%s');
+
+ echo $diff;
+ echo $(date);
+ echo;
+ done;
+
+diff=$((($(date +'%s') - $last_date)/60));
+echo "$diff - $last_line">>$log;
+echo "$(date)${sep}">>$log
+echo>>$log
