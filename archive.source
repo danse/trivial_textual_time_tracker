@@ -1,1 +1,0 @@
-mv -v /home/sebastiano/time/log /home/sebastiano/time/old_logs/"$(date)"

@@ -1,20 +1,19 @@
-sep="___________________________________________"
-log="/home/sebastiano/time/log"
-clear;
+folder=/home/francesco/repos/trivial_textual_time_tracker
+log="$folder/log"
+
+while sleep 1m
+    do echo -n '.'
+done &
+
+date
 last_date=$(date +'%s')
-while read line;
 
- do diff=$((($(date +'%s') - $last_date)/60));
- echo "$diff - $last_line">>$log;
- last_line="$(date) - $line">>$log;
- last_date=$(date +'%s');
-
- echo $diff;
- echo $(date);
- echo;
- done;
-
-diff=$((($(date +'%s') - $last_date)/60));
-echo "$diff - $last_line">>$log;
-echo "$(date)${sep}">>$log
-echo>>$log
+while read line
+    do
+    diff=$(( ($(date +'%s') - $last_date)/60 ))
+    echo $diff
+    [-e $log] && echo "$diff - $line">>$log
+    echo
+    date
+    last_date=$(date +'%s')
+done
