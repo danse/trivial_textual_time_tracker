@@ -1,0 +1,1 @@
+source group_sort_log.source.local | head -n -1 | python /home/sebastiano/gitspace/sparkles/regexp_filter.py ' - (\d+)' | python /home/sebastiano/gitspace/sparkles/plot.py &
