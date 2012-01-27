@@ -1,2 +1,2 @@
-log
-old_logs/*
+*.swp
+var
