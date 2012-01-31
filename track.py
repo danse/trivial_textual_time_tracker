@@ -3,7 +3,7 @@ import time
 import datetime
 import threading
 
-default = ''
+default = '/home/francesco/repos/trivial_textual_time_tracker/var/log'
 continue_ = True
 
 def points(seconds=60):
@@ -31,18 +31,19 @@ class FileManager:
             print('Caught exception "{0}", not writing the log to the filesystem'.format(e))
             self.file = None
 
-    def new_record(self, number, string):
+    def new_record(self, *args):
         if self.file:
-            record = self.format_record(number, string)
+            record = self.format_record(*args)
             self.file.write(record)
 
     @staticmethod
-    def format_record(number, string):
+    def format_record(*args):
         '''
-        >>> format_record(33, 'a long description')
-        33, a long description
+        >>> FileManager.format_record(33, 'a long description')
+        '33, a long description'
         '''
-        return '{0}, {1}'.format(number, string)
+        args = map(str, args)
+        return ', '.join(args)
 
 if __name__=='__main__':
     f=FileManager(sys.argv)
@@ -55,7 +56,7 @@ if __name__=='__main__':
         now      = datetime.datetime.now()
         interval = now - before
         interval = round(interval.seconds/60)
-        f.new_record(interval, line)
+        f.new_record(interval, line, now)
         prompt(now, interval)
     continue_ = False
     print('Please wait while our pointer is finishing pointing...')
