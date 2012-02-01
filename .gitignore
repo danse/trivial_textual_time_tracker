@@ -1,2 +1,5 @@
 *.swp
 var
+__pycache__/
+log
+old_logs
